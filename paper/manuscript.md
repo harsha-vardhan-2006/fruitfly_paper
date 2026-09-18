@@ -1,6 +1,6 @@
-# Neurotransmitter Identity and Network Control in the Drosophila Brain Connectome
+# Neuron-Level Structural Control Impact Reveals Visual-Centrifugal Chokepoints in the Drosophila Connectome
 
-*Working manuscript — E06–E14 results frozen 2026-09-15; E10B 100-null confirmation protocol completed 2026-09-17 (`results/final/e10b_final.json`). All cited references DOI-level verified 2026-09-17 (see References). Pre-submission tracker at the end of this document.*
+*Working manuscript — E06–E14 results frozen 2026-09-15; E10B 100-null confirmation protocol completed 2026-09-17 (`results/final/e10b_final.json`). All cited references DOI-level verified 2026-09-17 (see References). Title aligned with the headline finding 2026-09-18; primary H1 rejected under the pre-registered framework (Scenario B). Pre-submission tracker at the end of this document.*
 
 ---
 

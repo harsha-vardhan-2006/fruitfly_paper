@@ -10,8 +10,10 @@ Git: initialized 2026-09-18, commit `79d04ef`, raw data excluded.
 
 ## 1. Project identity
 
-- **Working title:** *Neurotransmitter Identity and Network Control in the
-  Drosophila Brain Connectome*
+- **Working title:** *Neuron-Level Structural Control Impact Reveals
+  Visual-Centrifugal Chokepoints in the Drosophila Connectome*
+  (retitled 2026-09-18 from "Neurotransmitter Identity and Network Control…"
+  to match the actual headline finding)
 - **Dataset:** FlyWire FAFB v783 (Princeton exports), CC BY-NC 4.0
 - **Primary artifact:** this repository (commit 79d04ef) +
   `dist/flybrain_connectome_control_FINAL.zip` (102 files, 5.4 MB)
@@ -238,3 +240,92 @@ structural control.
 | PDF | regenerated 2026-09-18 (236 KB) |
 | Git | init + commit 79d04ef; raw data excluded |
 | Novelty sweep + community check | executed 2026-09-18; no competing overlap |
+
+### Master roadmap compliance (2026-09-18, STEPS 1–20)
+
+All roadmap steps executed. Key dispositions: no further science run
+(STEP 1 ✅); documentation cleaned (STEP 2 ✅ — MASTER_PLAN execution table
+synced to final state, v2.1); log kept append-only with historical entries
+preserved (STEP 3 ✅); clean-room verification passed (STEP 4 ✅); master
+canonical-values table added to NUMBER_AUDIT.md (STEP 5 ✅); claim wording
+verified negative-for-H1 / positive-for-VC (STEP 6 ✅); novelty sweep
+executed with cautious wording retained (STEPS 7 ✅); literature matrix
+verified clean — 22 papers, 100% verification-statused, within the 20–30
+target, no placeholders (STEP 8 ✅); manuscript restructured to the required
+order and retitled to match the headline finding (STEP 9 ✅); connection-
+table limitation documented in Limitations §6.7 (STEP 10 ✅); figure check
+passed, Fig6 = 100-null distribution (STEP 11 ✅); PDF regenerated after
+the last manuscript edit, no post-PDF edits (STEP 12 ✅); ZIP rebuilt and
+leak-checked (STEP 13 ✅); deliverable SHA256 recorded in
+dist/SHA256SUMS.txt (STEP 14 ✅); freeze commit made (STEP 15 ✅);
+19-section report + Q&A below (STEPS 16, 19 ✅); submission-package mapping
+below (STEP 17 ✅); **FREEZE declared 2026-09-18 (STEP 18 ✅)**;
+submission itself is the user's action (STEP 20).
+
+### Submission-package mapping (STEP 17)
+
+The final ZIP preserves the repository layout; logical mapping:
+
+- **PAPER** — `paper/manuscript.md`, `paper/manuscript.html`,
+  `results/figures/fig2..fig7` (PDF ships alongside in dist/)
+- **CODE** — `src/`, `scripts/`, `tests/`, `configs/`, `requirements.txt`
+- **RESULTS** — `results/final/`, `results/tables/`, `results/e10b/`,
+  `results/superseded/`
+- **DOCUMENTATION** — `README.md`, `MASTER_PLAN.md`, `FINAL_REPORT.md`,
+  `QC_STATUS.md`, `NUMBER_AUDIT.md`, `LICENSE_NOTES.md`, `RESEARCH_LOG.md`,
+  `research_plan.md`, `review.md`, `reproducibility/`
+- **REPRODUCIBILITY** — `results/tables/e18_manifest.json` (19 raw-file
+  SHA256 + environment + frozen parameters), `dist/SHA256SUMS.txt`
+  (deliverable hashes)
+
+### Paper-defense Q&A (STEP 19 — locked answers)
+
+**Q1. What is your research question?**
+Are neuron-level structural control impacts explained solely by
+connectivity degree — and specifically, does GABAergic identity provide
+additional predictive information beyond degree?
+
+**Q2. What did you find?**
+The GABA-specific hypothesis was not supported: the matched GABA-vs-ACh
+effect (δ ≈ 0.098–0.111 depending on panel size) falls inside the
+100-null degree-preserving ensemble (p = 0.109 / 0.782). High-impact
+neurons were strongly enriched in visual-centrifugal architecture (2.6×
+after degree matching, z = 5.3, p = 1e-4).
+
+**Q3. What is your novelty?**
+To our knowledge, no prior study combines neuron-removal/global-efficiency
+impact ranking with degree-controlled neurotransmitter comparison,
+degree-preserving null testing, and visual-centrifugal enrichment analysis
+on FAFB v783.
+
+**Q4. Is this functional causality?**
+No. CIS measures structural network impact under computational node
+removal; it does not establish biological causality.
+
+**Q5. Why not simply use degree?**
+Because some neurons exert substantially greater control impact than
+degree-matched peers — 13/50 top chokepoints individually beat their
+degree-matched controls, and rank 3 (a degree-858 octopaminergic
+centrifugal neuron) reaches 156× its peer-median CIS.
+
+**Q6. Why use null networks?**
+To determine whether the observed pattern could arise from generic network
+structure while exactly preserving in/out degree sequences — the check
+that decided the primary hypothesis.
+
+**Q7. Did GABA win?**
+No. The final degree-controlled (OLS β₁ = −0.025, p = 0.95) and
+null-network (p = 0.109 / 0.782) analyses did not support an independent
+GABAergic effect.
+
+### 🔒 SCIENTIFIC FREEZE (STEP 18 — declared 2026-09-18)
+
+Frozen from this point forward: dataset (FAFB v783), CIS definition
+(freeze-N), estimator (fixed-source-panel BFS), two-stage strategy
+(k=8 → k=32–64), matching rule (±10%, 1:1 greedy), null construction
+(exact degree-preserving configuration model, seeds 100+i), statistical
+tests, all primary results, and the six main figures. Future changes are
+restricted to formatting, documentation, or correction of demonstrated
+errors — any of which must be logged in RESEARCH_LOG.md and followed by
+PDF/ZIP regeneration. No post-freeze manuscript edits after the final PDF
+(DIST hash in dist/SHA256SUMS.txt).

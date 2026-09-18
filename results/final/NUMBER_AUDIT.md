@@ -82,3 +82,42 @@ Environment-blocked checks (recorded honestly, not assumed):
   `verification_status` + `verification_source`) stands unchanged, and no
   new references were added from memory.
 - Fig-2 mean-degree label uses `mean_out_degree` (26.8) as in source.
+
+## Master canonical-values table (STEP 5, 2026-09-18)
+
+Single reference for every headline number; every occurrence in the
+manuscript, abstract, figures/captions, README, and FINAL_REPORT must
+equal these values (verified 2026-09-18).
+
+| Quantity | Canonical value | Authoritative source |
+|---|---|---|
+| Metadata neurons | 139,255 | `data/processed/build_report.json` (E01) |
+| Graph nodes / edges | 138,584 / 3,732,460 | E01/E02 (`baseline_global.csv`) |
+| Mean degree / density / reciprocity | 26.8 / 1.92e-4 / 0.083 | E02 |
+| Largest weak component | 98.4% | E02 |
+| Pre-registered targets | 3,518 | `e06_preregistration.json` |
+| Matched pairs | 848 | `e08_matched_pairs.csv` |
+| Matched δ / Wilcoxon p / perm p | 0.111 / 0.0011 / ≈1e-4 | `e09_results.json` |
+| OLS β₁(GABA) / p | −0.025 / 0.95 | `e09_results.json` |
+| E10B null networks | 100 (all degree-verified) | `e10b_nulls.csv` |
+| E10B observed δ (k=4) | 0.0979 | `e10b_final.json` |
+| E10B null δ mean / sd | 0.0713 / 0.0220 | `e10b_final.json` |
+| E10B empirical p_delta / p_median | 0.109 / 0.782 | `e10b_final.json` |
+| E10B z vs null | 1.21 | `e10b_final.json` |
+| VC top-50 / raw enrichment | 21/50 / 11.7× | `e12_strong_results.json` |
+| K=50 degree-matched enrichment / z / p | 2.63× / 5.3 / 1e-4 | `e12_strong_results.json` |
+| K=25 / K=100 enrichment | 2.47× / 2.15× | `e12_strong_results.json` |
+| Central-brain representation | 0.27× | `e12_strong_results.json` |
+| E14-v2 exceeders / visual share | 13/50 / 10/13 | `e14_v2_summary.json` |
+| E14-v2 rank 1 / rank 3 | 2.35× peers / 156× peers | `e14_chokepoint_catalogue_v2.csv` |
+| Seed stability (k=32) | ρ 0.965/0.953/0.905/0.882 | `e13_full_results.json` |
+| k16↔k32 / Jaccard top-100 / top-50 | 0.86 / 0.63 / 0.40 | `e13_full_results.json` |
+| GABA+GLUT sensitivity δ | 0.107 (967 pairs) | `e13_full_results.json` |
+| E11 neighborhood GABA fraction | 16.7% vs 16.9% background | `e11_e14_results.json` |
+| Raw-file SHA256 coverage | 19/19 recomputed MATCH | `e18_manifest.json` (verified 2026-09-18) |
+| Tests | 12/12 pass | `py -m pytest -q` |
+| Final package | 102 files / 5.4 MB / leak-CLEAN | `dist/flybrain_connectome_control_FINAL.zip` |
+| Git provenance | 79d04ef → ac0edbe → (final freeze commit) | this repository |
+
+Verdict: **all manuscript occurrences agree with canonical values; 43/43
+rows above plus this table verified 2026-09-18.**

@@ -1,0 +1,9 @@
+# SHA256 - final deliverables (STEP 14, generated 2026-09-18)
+# Frozen scientific artifacts; regenerate only after documented corrections.
+
+359ab7ac7a476c90502dd6f8fa5028e4e74b97e10371f8581d0e4cae63d7cb6b  dist/flybrain_connectome_control_FINAL.zip
+415857ccf31f9dcf930376388cd06805ef25378738aa70c76ecc51df76286667  dist/manuscript.pdf
+763064e8c39d6957881fdd60dd951f3c2ead3e19f8b15dd67919953e6e08d8c4  paper/manuscript.md
+c0136eacce776d02124863e428e65d4527c3daba4b8b055a1b52d4f43e7ceffc  results/final/e10b_final.json
+7cd57bcde4a6d65085fa5759c4498054bb9d37b166aad20679c2187b2e1cf764  results/tables/e10b_nulls.csv
+b80aca9a396590c6aa561aeaf0f2ad8f66beabf5d93d640a284ed0f98ca4a76d  results/final/FINAL_REPORT.md

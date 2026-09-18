@@ -1,7 +1,7 @@
 # MASTER PLAN — Inhibitory Chokepoints in the Drosophila Brain
 ### The definitive project document: requirements → verified novelty → frozen hypothesis → experiments → status
 
-**Version:** 2.0 (2026-09-15, post-audit)
+**Version:** 2.1 (2026-09-18, post-finalization — execution table synced to actual final state; v2.0 2026-09-15 post-audit)
 **Supersedes:** research_plan.md Parts 4–8 (lit survey + hypotheses) — those remain valid for dataset audit (Parts 1–3) but the novelty verdict below is the authoritative one.
 **Inputs:** `review.md` (raw-data audit), `research_plan.md` (strategy), `literature/literature_review.csv` (19 verified papers), `RESEARCH_LOG.md` (executed experiments).
 
@@ -81,7 +81,7 @@ H1 v1 (pre-audit) is superseded: it failed to account for Lin's GABA-degree find
 
 **E02 — Baseline (DONE, log E02).** Global: n, mean degree 26.8, density 1.92e-4, reciprocity 0.083, 875 WCCs (largest 98.4%). By-NT table (key row: GABA n=16,017, mean in-strength 754 vs ACh 318 — the Lin-replication signal). Outputs in `results/tables/`.
 
-**E03 — Chokepoint perturbation (NEXT).**
+**E03 — Chokepoint perturbation (EXECUTED as the E06–E10 chain; see RESEARCH_LOG).**
 - *Data:* `graph_pairs.parquet` + `neuron_core.parquet`.
 - *Graph:* binary digraph on the 137,679-node thresholded connectome; per-neuropil variant for regional analyses.
 - *Performance metric:* global efficiency on sampled source set (n≈1,000 sources; exact on ≤5,000-node subgraphs). CIS(i) = (Eff(G) − Eff(G−i)) / Eff(G).
@@ -90,7 +90,7 @@ H1 v1 (pre-audit) is superseded: it failed to account for Lin's GABA-degree find
 - *Statistics:* Wilcoxon signed-rank on matched pairs; linear model CIS ~ degree + strength + nt_sign (+ superclass FE); permutation p-values; BH-FDR.
 - *Success criteria:* Outcome A = inhibitory excess in CIS persists after matching (median ΔCIS > 0, q < 0.05); Outcome B = regional/class-specific excess only; Outcome C = no excess after matching (report "topology explains control; NT identity adds nothing" — publishable null).
 
-**E04 — Null models.** Maslov–Sneppen degree-preserving rewires (n≥100; more if z marginal) on the binary graph; recompute CIS ranking per replicate; z-scores + BH-FDR for (i) per-neuron CIS, (ii) GABA-enrichment of top-k chokepoint sets. Null implementations already staged in `src/experiments/null_models.py`.
+**E04 — Null models (EXECUTED: E10 pilot 5 nulls, then E10B 100/100 with per-null degree verification; Gate 4 closed 2026-09-17, Scenario B).** Maslov–Sneppen degree-preserving rewires on the binary graph; recompute matched-pair statistic per replicate. Implementations in `src/experiments/null_models.py` + `run_e10b.py`, regression-tested in `tests/test_null_models.py`.
 
 **E05 — Robustness.** Repeat E03–E04 on: (a) no-threshold Princeton edges; (b) Buhmann edges; (c) threshold ∈ {2, 5, 10}; (d) GLUT-as-inhibitory sensitivity; (e) QC weighting by `synapse_attachment_rates.proof_ratio`. Report concordance of top-100 chokepoint sets (Jaccard) and sign stability of the matched-pair effect.
 
@@ -109,23 +109,25 @@ H1 v1 (pre-audit) is superseded: it failed to account for Lin's GABA-degree find
 | Raw dataset protection | ✅ untouched; all outputs to data/processed, results/ |
 | Dataset audit | ✅ review.md + verified quirks in loaders |
 | Literature review | ✅ 19 papers, 100% verification-statused, structure-validated CSV |
-| Novelty | 🟡 probable + precisely bounded; pre-submission gates defined (§3.2) |
-| H1 | 🟢 frozen **v2** (post-audit, degree-residual form) |
+| Novelty | 🟢 probable + precisely bounded; pre-submission gates EXECUTED 2026-09-18 (2025–26 sweep + FlyWire/CODEX community check; no competing four-way-combination work) |
+| H1 | 🔒 frozen **v2**, TESTED — REJECTED under the pre-registered framework (E10B 100-null ensemble, Scenario B, p = 0.109 / 0.782) |
 | Project structure | ✅ src/ data/ results/ literature/ + docs |
 | Data pipeline | ✅ E01 executed (38s, all validations green) |
 | Baseline | ✅ E02 executed (20s); GABA-strength signal = Lin replication (documented) |
-| Chokepoint experiment | 🔴 E03 staged (code implemented, not run) |
-| Degree-matched analysis | 🔴 part of E03, not run |
-| Null models | 🔴 E04 staged, not run |
-| Statistical validation | 🔴 not run |
-| Biological interpretation | 🔴 not run |
-| Paper | 🔴 not started (structure pre-defined in research_plan.md) |
+| Chokepoint experiment | ✅ E06–E08 executed (3,518 pre-registered targets; CIS ranking; 12/12 tests) |
+| Degree-matched analysis | ✅ E08/E09 executed (848 pairs; δ = 0.111; OLS β₁ = −0.025) |
+| Null models | ✅ E10 pilot + E10B 100/100 degree-verified (p = 0.109 / 0.782; Gate 4 CLOSED, Scenario B) |
+| Statistical validation | ✅ E09 tests + E13-full robustness battery (seeds ρ 0.88–0.96; GABA+GLUT δ = 0.107) |
+| Biological interpretation | ✅ E11 neighborhoods, E12-strong VC enrichment (2.6×, z = 5.3), E14-v2 catalogue (13/50), region mapping |
+| Paper | ✅ manuscript + 6 figures + PDF; number audit 43/43; references 12/12 DOI-verified |
 
-**We are NOT at "proved inhibitory chokepoints exist".** We are at: foundation ✅ → novelty 🟡 (bounded, gated) → frozen H1 v2 → reproducible pipeline ✅ → baseline ✅ → **E03 next**.
+**Final state (2026-09-18):** H1 was tested and **rejected** under the pre-registered framework — the matched GABA effect is compatible with degree-preserving structure (E10B, Scenario B). The positive contribution is the visual-centrifugal chokepoint architecture (2.6× enrichment after degree matching; 13/50 individuals beating degree-matched peers). Pipeline, statistics, interpretation, paper, QC, package, and git history are complete; submission tasks remain (venue, cover letter, bioRxiv).
 
 ---
 
 ## 7. Corrected roadmap
+
+*(Historical schedule as planned 2026-09-15; all items since executed per RESEARCH_LOG — finalization completed 2026-09-18.)*
 
 - **Now (Week 4):** run E03 as specified in §5; pre-register exact target lists in RESEARCH_LOG before unblinding results.
 - **Week 5:** E04 nulls; freeze chokepoint definition (no post-hoc changes after nulls run).

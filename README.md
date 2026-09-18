@@ -1,6 +1,11 @@
 # flybrain-research
 
-**Working title:** *Inhibitory Chokepoints in the Drosophila Brain:
+**Working title (updated 2026-09-18 to match the headline finding):**
+*Neuron-Level Structural Control Impact Reveals Visual-Centrifugal
+Chokepoints in the Drosophila Connectome* — the primary GABA hypothesis
+(H1) was tested and rejected under the pre-registered framework; the
+positive contribution is the visual-centrifugal chokepoint architecture.
+Formerly: *Inhibitory Chokepoints in the Drosophila Brain:
 A Neurotransmitter-Resolved Network Analysis of Information Flow*
 
 ## Research question
