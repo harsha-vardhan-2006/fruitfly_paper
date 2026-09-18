@@ -2,9 +2,18 @@
 
 Publication repository for the frozen FAFB v783 connectome control-impact study.
 
-Manuscript (frozen): *Neuron-Level Structural Control Impact Reveals
-Visual-Centrifugal Chokepoints in the Drosophila Connectome* —
-`paper/manuscript.md`, `paper/manuscript.tex`, production PDF in `dist/`.
+**Repository status: FINAL SCIENTIFIC STATE — analysis frozen 2026-09-18.**
+E10B degree-preserving null analysis: COMPLETE (100/100 null networks).
+E14 visual-centrifugal chokepoint analysis: COMPLETE. Final manuscript:
+COMPLETE. Final scientific QC: COMPLETE. All experiments E01–E14B are
+executed; nothing is staged or pending.
+
+The frozen manuscript is *Neuron-Level Structural Control Impact Reveals
+Visual-Centrifugal Chokepoints in the Drosophila Connectome*
+(`paper/manuscript.md`, `paper/manuscript.tex`, production PDF in `dist/`).
+Historical working title (superseded, context only): *Inhibitory Chokepoints
+in the Drosophila Brain* — retained in historical planning documents
+(`MASTER_PLAN.md`, `RESEARCH_LOG.md`) as a record of the project's origin.
 
 ## Overview
 
@@ -199,9 +208,22 @@ added upon release through an archival repository.
 
 ## Final Research Status
 
-**Scientific analysis frozen September 18, 2026.** Subsequent changes are
-restricted to documentation, formatting, archival, reproducibility, or
-correction of demonstrated errors. The scientific freeze commit is
-`fdfafe5`; release-preparation documentation (this README, CITATION.cff,
-provenance corrections) follows it. See
-`results/final/FINAL_REPORT.md` and `results/final/FINALIZE_DONE.stamp`.
+**FINAL SCIENTIFIC STATE — Analysis frozen 2026-09-18.** Subsequent changes
+are restricted to documentation, formatting, archival, reproducibility, or
+correction of demonstrated errors.
+
+Completion status:
+
+- ✅ E10B degree-preserving null analysis — COMPLETE (100 directed
+  configuration-model null networks, exact degree preservation verified
+  per null)
+- ✅ E14 visual-centrifugal chokepoint analysis — COMPLETE (v2 catalogue
+  + region mapping)
+- ✅ Final manuscript — COMPLETE (md/tex/HTML + production PDF)
+- ✅ Final scientific QC — COMPLETE (12/12 tests; 43/43 number audit;
+  19/19 raw-file SHA256)
+- ✅ Scientific freeze — 2026-09-18 (freeze commit `fdfafe5`;
+  release-preparation documentation follows it)
+
+See `results/final/FINAL_REPORT.md` and
+`results/final/FINALIZE_DONE.stamp`.
