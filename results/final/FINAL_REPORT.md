@@ -1,135 +1,240 @@
-# FINAL REPORT — flybrain-research (E10B-gated)
+# FINAL REPORT — flybrain-research (FAFB v783 connectome control-impact study)
 
-Generated: 2026-09-16; **completed 2026-09-17: E10B reached 100/100, all
-nulls degree-verified; the three E10B-dependent slots below are filled from
-`results/final/e10b_final.json`, and every pre-registered finish-line step
-has been executed (see §7).**
-
-This report follows the locked finalization roadmap (F1→F10). It obeys the
-pre-registered honesty rules: **no statistic switching after seeing
-results; both E10B statistics are reported whichever way they point; the
-manuscript is updated only from `results/final/e10b_final.json`.**
+**Status: SUBMISSION-READY (post-audit, 2026-09-18).** Every pre-registered
+experiment, gate, and finish-line step executed and verified; the 2026-09-18
+audit session re-verified all artifacts end-to-end and corrected the last
+stale documentation values (see §16 and the audit appendix at the end).
+Git: initialized 2026-09-18, commit `79d04ef`, raw data excluded.
 
 ---
 
-## 1. Locked scientific conclusion (Step 8 — final wording)
+## 1. Project identity
 
-The paper answers five separable questions:
+- **Working title:** *Neurotransmitter Identity and Network Control in the
+  Drosophila Brain Connectome*
+- **Dataset:** FlyWire FAFB v783 (Princeton exports), CC BY-NC 4.0
+- **Primary artifact:** this repository (commit 79d04ef) +
+  `dist/flybrain_connectome_control_FINAL.zip` (102 files, 5.4 MB)
+- **Finalization:** 2026-09-17 (first pass), 2026-09-18 (post-audit re-verification)
 
-- **Q1 — Are GABA neurons structurally high-degree?** Yes — replication of
-  Lin et al. 2024 (ED Fig 3d), not claimed as novel.
-- **Q2 — Does GABA identity explain control impact beyond degree?**
-  Primary test (E08/E09): matched-pair δ = 0.111, Wilcoxon p = 0.0011, but
-  OLS β₁(GABA) = −0.025 (perm p = 0.95) after log-degree control.
-  **E10B is the decisive arbiter — see §2.**
-- **Q3 — Where are the strongest control chokepoints?** Whole-brain control
-  concentrates in **visual centrifugal architecture**: top-50 = 21/50 VC
-  (11.7× raw; **2.6× after degree matching, z = 5.3, p = 1e-4**); central
-  brain under-represented (0.27×).
-- **Q4 — Are those chokepoints merely degree effects?** E14-v2
-  (selection-bias-corrected): **13/50 beat degree-matched peers
-  individually (emp p < 0.01; 10/13 visual-system)**; 22/50 are degree-
-  driven hubs; rank 3 (OCT centrifugal, degree 858) = **156× peer-median
-  CIS** — a genuine low-degree bridge.
-- **Q5 — Could the GABA effect arise from generic degree-preserving
-  architecture?** E10B — §2.
+## 2. Research question (frozen)
 
-## 2. E10B — final statistics (COMPLETE — from e10b_final.json, verified by scripts/verify_e10b_final.py)
+> Are GABAergic/inhibitory neurons true network-control bottlenecks, or are
+> they simply high-degree structural hubs?
+
+## 3. Hypothesis (frozen v2, 2026-09-15 — tested, not modified)
+
+> After accounting for degree, inhibitory/GABAergic identity is associated
+> with disproportionately high per-neuron network control impact — beyond
+> the degree–GABA association already documented by Lin et al. 2024.
+
+## 4. Dataset
+
+- 19 raw gzipped CSV exports + `sk_lod1_783_healed.zip` (139,273 SWCs).
+- Raw files **unmodified**; SHA256 manifest in
+  `results/tables/e18_manifest.json` — **19/19 recomputed MATCH 2026-09-18**.
+- Required citations: Dorkenwald 2024; Schlegel 2024; Matsliah 2024
+  (`LICENSE_NOTES.md`).
+
+## 5. Graph construction (E01)
+
+139,255 neurons merged; 100% root_ids pass 18-digit validation;
+5,342,446 per-neuropil rows → 3,732,460 unique pairs; 0 self-loops; 100% of
+edge endpoints present in metadata.
+
+## 6. CIS definition (frozen)
+
+CIS(i) = 1 − S(G−i)/S(G), S = Σ 1/d(i,j) over unweighted directed shortest
+paths; **freeze-N** normalization for primary inference (CIS ∈ [0,1]);
+free-N diagnostic only. Estimator: fixed-source-panel BFS (same panel for
+all targets; per-target COO edge masking).
+
+## 7. Computational strategy
+
+Two-stage: **k=8 screening** (3,518 pre-registered targets) → **k=32–64
+rerank of finalists**. Strategy C (candidate-first) selected after
+benchmarking: baseline panel BFS k=8 ≈ 1.5 s, k=32 ≈ 4.0 s; ~1.63 s per
+target at k=8 on 138,584 nodes / 3,732,460 edges.
+
+## 8. Observed GABA result (E08/E09 — locked)
+
+848 degree-matched GABA–ACh pairs (±10% total degree, 1:1 greedy, without
+replacement): GABA median CIS higher; median diff 8.7e-7; **Cliff's
+δ = 0.111; Wilcoxon p = 0.0011; permutation p ≈ 1e-4**.
+
+## 9. Degree-controlled result (locked)
+
+OLS log10(CIS) ~ GABA + log10(degree): **β₁(GABA) = −0.025, permutation
+p = 0.95** — no positive association after degree control. Interpretation:
+the observed GABA effect does not survive the tested degree-control model
+(no causal claim either way).
+
+## 10. 100-null result (E10B — the decisive arbiter; locked)
+
+100 degree-preserving directed configuration-model nulls (exact in/out
+degree sequences verified per null; null_id 0–99; seeds 100+i; rejection
+redraw for repair failures; regression-tested implementation).
 
 ```text
-[COMPLETE] observed Cliff's delta          = 0.0979 (k=4 panel — the same
-      estimator as the nulls; the E09 primary matched-pair statistic reads
-      delta = 0.111 from the k=8 screening CIS; see manuscript §4.5 note)
-[COMPLETE] null delta mean / sd / median   = 0.0713 / 0.0220 / 0.0729
-[COMPLETE] null delta 2.5% / 97.5%         = 0.0193 / 0.1107 (min 0.0078, max 0.1211; recomputed from the 100-null CSV 2026-09-18 — the earlier "min 0.0418" was a carry-over from the superseded 16-null interim report)
-[COMPLETE] empirical p_delta (100 nulls)   = 0.109  (10/100 nulls >= observed 0.0979; z vs null = 1.21)
-[COMPLETE] observed median diff            = 6.62e-07
-[COMPLETE] null median-diff distribution   = mean 1.53e-06, range -9.69e-07 .. 3.77e-06
-[COMPLETE] empirical p_median_diff         = 0.782  (78/100)
-[COMPLETE] Scenario A / B / C verdict      = **B** — observed statistic inside
-      the null ensemble; both statistics agree (p_delta = 0.109,
-      p_meddiff = 0.782, both > 0.05; Scenario C does not apply).
-      H1 rejected; Gate 4 closed 2026-09-17.
+observed delta (k=4 panel)      = 0.0979
+null delta mean / sd / median   = 0.0713 / 0.0220 / 0.0729
+null 2.5% / 97.5%               = 0.0193 / 0.1107 (min 0.0078, max 0.1211)
+empirical p_delta (10/100)      = 0.109     z vs null = 1.21
+observed median diff            = 6.62e-07
+null median-diff mean/range     = 1.53e-06 / (−9.69e-07 .. 3.77e-06)
+empirical p_median_diff         = 0.782
+VERDICT: Scenario B (pre-locked rule) — H1 REJECTED; Gate 4 closed.
 ```
 
-Pre-locked interpretation rule (cannot be changed post hoc):
-- Scenario A (observed outside null ensemble): effect not explained by
-  degree-preserving structure → strengthens H1.
-- Scenario B (observed inside): effect compatible with degree-driven
-  structure → H1 rejected; **this is a legitimate, publishable outcome.**
-- Scenario C (statistics disagree): both reported; divergence
-  investigated, not cherry-picked.
-- Interim (16 nulls, superseded): p_delta = 0.0588, p_meddiff = 0.8235,
-  all nulls ≤ observed δ — currently trending B; **gate closed until 100/100.**
+(Source of truth: `results/final/e10b_final.json` = `results/tables/e10b_results.json`;
+independently recomputed by `scripts/verify_e10b_final.py` — all green.
+Note: the earlier "min 0.0418" was the superseded 16-null interim value;
+corrected 2026-09-18 from the 100-null CSV.)
 
-## 3. Verified final numbers (source of truth: results files; 43/43 ✅)
+## 11. Visual-centrifugal result (E12-strong — the positive contribution)
 
-Full table: `results/final/NUMBER_AUDIT.md`. Headlines:
-- Network: 138,584 nodes / 3,732,460 edges / mean degree 26.8 / reciprocity 0.083.
-- Matched GABA effect: δ = 0.111, Wilcoxon p = 0.0011, perm p ≈ 1e-4.
-- OLS after degree control: β₁ = −0.025 (p = 0.95).
-- VC enrichment (E12-strong): K=25 → 2.47× (z=3.3); K=50 → 2.63× (z=5.3,
-  p=1e-4); K=100 → 2.15× (z=4.9) — consistent across K.
-- Robustness (E13): seeds ρ 0.88–0.96; k16↔k32 0.86; top-100 Jaccard 0.63;
-  GABA+GLUT δ = 0.107 ≈ 0.111; reach-drop ρ = 0.39 (reported, not hidden).
-- Connection-table sensitivity: honest documented gap (no-threshold OOM at
-  8 GB → high-RAM notebook; Buhmann non-comparable).
+Top-50 CIS neurons: **21/50 visual centrifugal** — 11.7× raw enrichment,
+**2.6× after per-slot degree matching (z = 5.3, p = 1e-4)**; K=25 → 2.47×
+(z=3.3); K=100 → 2.15× (z=4.9); central brain under-represented (0.27×).
+Degree explains most, not all, of the concentration.
 
-## 4. Neuropil mapping (Step 11 — NEW artifact)
+## 12. Chokepoint catalogue (E14-v2 — the only authoritative version)
 
-`results/tables/e14_top50_region_mapping.csv` — top-3 input/output
-neuropils per top-50 chokepoint. Highlights:
-- **Rank 1 LO.5422** (GABA, optic, right): LO→LO/ME giant, 67k output
-  synapses in LO_L — CIS 2.4% of whole-brain efficiency.
-- **Rank 2 LO.1** (GABA, optic, left): mirror-side counterpart — bilateral
-  pair dominates the top of the CIS distribution.
-- **Rank 3 ME.131** (OCT, visual_centrifugal, left): ME input, ME/LO
-  output + SPS contacts — the low-degree centrifugal bridge.
-- Central-brain entries (GNG.1, GNG.5, MB_ML.MB_CA.1) localize to GNG and
-  mushroom-body lobes — consistent with the 0.27× central
-  under-representation at top-50 level (a few strong exceptions).
+Selection-bias-corrected per-node tests vs degree-matched peers (self
+excluded; pools from the full tested population): **13/50 beat their
+degree-matched peers individually (emp p < 0.0005–0.01); 10/13 are
+visual-system neurons**. Rank 1 (GABAergic optic, degree 12,444, CIS 2.40%):
+2.35× peers. Rank 3 (octopaminergic centrifugal, degree 858): **156× peer
+median** — a low-degree structural control chokepoint under the CIS metric
+(not a demonstrated "functional bottleneck"). 22/50 degree-driven hubs;
+9 tiny peer pools flagged. Files: `e14_chokepoint_catalogue_v2.csv`,
+`e14_e10b_integrated_catalogue.csv` (ensemble note corrected to the final
+100-null statistics), `e14_top50_region_mapping.csv`.
 
-## 5. Verification & QC state
+## 13. Robustness (E13-full)
 
-- Test suite: **12/12 PASS** (`py -m pytest -q`, re-run 2026-09-16 and
-  2026-09-17 post-E10B).
-- Number audit: **40/40 E10B-independent manuscript numbers match their
-  source files** (`results/final/NUMBER_AUDIT.md`); rows 41–43
-  (E10B-dependent) filled 2026-09-17 and recomputed independently by
-  `scripts/verify_e10b_final.py` (all checks green; final JSON byte-identical
-  to tables JSON; archive CSV hash-identical).
-- E12-strong enrichment code audited against the Step-10 checklist
-  (denominator = tested universe + degree-matched control; top-K fixed
-  before testing; per-slot matching; consistent across K) — no defects found.
-- Results reorganization: `results/final/`, `results/superseded/`
-  (E10 pilot + 16-null interim preserved — audit trail intact).
-- E10B archive: `results/e10b/E10B_FINAL_STATUS.md`.
-- Full checklist: `QC_STATUS.md`.
+Seeds (k=32, 4 panels): ρ 0.965/0.953/0.905/0.882; top-100 Jaccard 0.63,
+top-50 0.40. k-ladder: k8–k16 0.66, k8–k32 0.67, **k16–k32 0.86** (two-stage
+design validated). Degree definition: CIS~total 0.58 / out 0.54 / in 0.49;
+top-50 output-dominated (median out 1,050 vs in 566). GABA+GLUT
+sensitivity: 967 pairs, δ = 0.107 ≈ 0.111. Metric: reach-drop ρ = 0.39
+(reported, not hidden).
 
-## 6. Previously blocked items — resolution record (2026-09-17)
+## 14. Limitations (honest)
 
-1. **E10B completion** — DONE: 100/100, all degree-verified; statistics via
-   `py -m src.experiments.run_e10b stats`; verdict **Scenario B** (§2).
-2. **2025–26 novelty sweep + DOI re-verification** — DONE this session via
-   Crossref/publisher records: 12/12 cited references verified; 6 citation
-   corrections (Dorkenwald pages 124–138; Schlegel exact title; Shih =
-   Current Biology; Uzel pages 3443–3459; Hoeller DOI 10.1016/j.cell.2026.08.014;
-   TiNS = Mickels & Turner 2026, 49(1):63–75). Full list: References.
-3. **Manuscript E10B sections + Fig6** — DONE (single-pass update from
-   e10b_final.json; Fig6 regenerated from the 100-null file via E15).
-4. **Final package ZIP** — verified executed this session via
-   `scripts/make_final_zip.py`: `dist/flybrain_connectome_control_FINAL.zip`
-   (102 files, 5.4 MB, raw-dataset leak check CLEAN). Also generated:
-   `dist/manuscript.pdf` (236 KB, via `scripts/md_to_html.py` + Edge headless).
+1. Structural connectome ≠ functional dynamics; node removal is an
+   abstraction of silencing.
+2. NT annotation is prediction, not measured sign; GLUT handled separately.
+3. **Connection-table sensitivity: no-threshold run NOT completed**
+   (RAM-infeasible on 8 GB; ~50M collapsed pairs; deferred to high-RAM
+   notebook). Buhmann table excluded as non-comparable. This limitation is
+   documented, not hidden; GABA-definition sensitivity *is* resolved.
+4. Null comparison at k=4 panel (observed enters that comparison at k=4,
+   δ = 0.098, while the primary matched-pair statistic reads δ = 0.111 from
+   the k=8 screening CIS); 100-null tail resolution ≈ 0.01; both statistics
+   agree on the verdict.
+5. One female brain, one reconstruction (v783); FANC/MANC/MaleCNS/BANC
+   cross-dataset replication left to future work.
+6. Efficiency is one metric; reachability correlates only moderately (ρ=0.39).
 
-## 7. Finish-line procedure (mechanical, ~10 minutes once 100/100)
+## 15. Literature / novelty status (submission-time gate — executed 2026-09-18)
 
-```bash
-py -m src.experiments.run_e10b stats          # → results/tables/e10b_results.json
-py -m src.experiments.run_e15_figures         # Fig6 from the 100-null file
-py -m pytest -q                               # 12/12
-cp results/tables/e10b_results.json results/final/e10b_final.json
-cp results/tables/e10b_nulls.csv results/e10b/
-# then: fill §2 above from e10b_final.json; single-pass manuscript edit;
-# final ZIP excluding raw dataset.
-```
+- **Searched:** Google-indexed bioRxiv/arXiv/PubMed/Nature/Cell surfaces,
+  Crossref-verified reference records, FlyWire ecosystem pages
+  (flywire.ai, flyconnecto.me, discuss.flywire.ai, CODEX). Query families:
+  FAFB/FlyWire × {node/neuron removal, control impact, controllability,
+  chokepoint/bottleneck, degree-matched/degree-preserving, GABA/inhibitory,
+  visual centrifugal}.
+- **Closest work (all already documented):** Lin et al. 2024 (degree-ordered
+  removal, configuration-model nulls, no per-neuron NT-conditioned ranking);
+  Bates et al. 2026 Nature (BANC brain-and-cord; different dataset/scope);
+  Nern et al. 2025 (visual-system inventory, no perturbation); Hoeller et
+  al. 2026 Cell (visual pathway classification, no perturbation); Shiu 2024
+  (simulation, not structural removal ranking); flyGNN (arXiv 2026,
+  GNN link modeling — adjacent, no overlap with the claim).
+- **No paper found combining** FAFB adult connectome + per-neuron
+  control-impact perturbation + NT-conditioned comparison + degree-matched
+  controls + degree-preserving nulls + visual-centrifugal chokepoint
+  analysis. **Novelty wording in the manuscript uses the cautious form**
+  ("To our knowledge…"); a competing disclosure would trigger re-framing,
+  not concealment.
+- FlyWire/CODEX community check: no in-preparation competing work publicly
+  disclosed as of 2026-09-18.
+
+## 16. QC (all verified 2026-09-18)
+
+- Tests: **12/12 PASS** (`py -m pytest -q`, 8.92 s).
+- Number audit: **43/43** manuscript numbers match source files
+  (`results/final/NUMBER_AUDIT.md`); stale 16-null ensemble notes found in
+  `e14_e10b_integrated_catalogue.csv` (all 50 rows) and
+  `e14_v2_summary.json` were corrected, and the stale "min 0.0418" in
+  FINAL_REPORT/RESEARCH_LOG was fixed to the true 100-null minimum 0.0078.
+  Historical/superseded values remain clearly quarantined in
+  `results/superseded/` and `results/e10b/E10B_FINAL_STATUS.md` (marked
+  interim) — audit trail intact, nothing deleted.
+- Manifest: 19/19 SHA256 recomputed MATCH (raw data untouched).
+- Figures: fig2–fig7 regenerated 2026-09-18 from final data; **Fig6 renders
+  the 100-null distribution with observed δ, both p-values, n=100**
+  (generation code reads `e10b_results.json`, verified).
+- Results hygiene: `results/final/` + `results/superseded/` separation.
+
+## 17. Package contents
+
+- `dist/flybrain_connectome_control_FINAL.zip` — 102 files, 5.4 MB,
+  rebuilt 2026-09-18 with corrected artifacts; raw-dataset leak check
+  **CLEAN** (no .gz/.zip raw data, no caches, no credentials); contains
+  code, tests, configs, processed tables, figures, manuscript, docs,
+  manifests.
+- `dist/manuscript.pdf` — 236 KB, regenerated 2026-09-18 from the current
+  `paper/manuscript.md` (md_to_html.py + Edge headless).
+- `results/final/FINALIZE_DONE.stamp` — updated post-audit with all
+  verification statuses.
+- Git: repository initialized 2026-09-18 (branch `main`, commit `79d04ef`);
+  `.gitignore` excludes the raw dataset, caches, and secrets; the only
+  committed ZIP is the final deliverable itself.
+
+## 18. Final conclusion (locked)
+
+The pre-registered test did not support the hypothesis that GABAergic
+identity contributes additional neuron-level network control impact beyond
+degree-related structural effects. **H1 is rejected under the
+pre-registered/tested framework.** Although the matched GABA-vs-ACh
+comparison showed a positive effect (Cliff's δ ≈ 0.111 at k=8 screening;
+δ ≈ 0.098 in the final null-comparison protocol at matched panel size), the
+observed statistic was compatible with the degree-preserving null ensemble
+(empirical p = 0.109; median-difference p = 0.782; z = 1.21). In contrast,
+the strongest control-impact neurons showed a reproducible concentration in
+visual-centrifugal architecture, with approximately 2.6-fold enrichment
+after degree matching (z = 5.3, p = 1e-4), and 13 of the top 50
+individually exceeding degree-matched peers (10/13 visual-system). These
+findings support a structural chokepoint interpretation of specific
+visual/centrifugal network architecture rather than a
+neurotransmitter-identity-specific control effect. The evidence supports
+only this tested interpretation: it does not establish that degree *causes*
+the effect, nor that GABAergic neurons play no functional role beyond
+structural control.
+
+## 19. Remaining submission tasks
+
+1. Venue selection + cover letter (lead with the honest null + VC result).
+2. bioRxiv posting; repository archival (Zenodo DOI for commit 79d04ef).
+3. Optional future work (not blockers): connection-table sensitivity on a
+   high-RAM machine; signed-motif layer around the VC chokepoint set;
+   cross-dataset replication (BANC/MaleCNS); E08 AI prediction layer
+   explicitly skipped as unnecessary for completion.
+
+---
+
+### Audit appendix — 2026-09-18 session record
+
+| Check | Result |
+|---|---|
+| Repository audit (23 key artifacts) | all present |
+| Tests | 12/12 pass (8.92 s) |
+| E10B integrity | 100/100 nulls, null_id 0–99 complete, status ok ×100, all degree-verified; final JSON ≡ tables JSON; archive CSV hash-identical |
+| SHA256 manifest | 19/19 recomputed MATCH |
+| Stale-value sweep | 3 documentation-level corrections (integrated-catalogue ensemble notes ×50 rows; e14_v2_summary note; null-delta min 0.0418→0.0078); superseded artifacts remain quarantined and labeled |
+| ZIP | 102 files / 5.4 MB; leak check CLEAN; corrected files verified inside |
+| PDF | regenerated 2026-09-18 (236 KB) |
+| Git | init + commit 79d04ef; raw data excluded |
+| Novelty sweep + community check | executed 2026-09-18; no competing overlap |

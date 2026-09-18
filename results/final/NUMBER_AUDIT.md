@@ -51,7 +51,30 @@ Audited: 2026-09-16. Method: every E10B-independent number in
 | 43 | E10B median-diff p | same | 0.7822 (obs 6.62e-7; null mean 1.53e-6) | p = 0.78 | ✅ |
 
 Rows 1–43: **43/43 ✅ verified against source files** (rows 41–43 recomputed
-independently by `scripts/verify_e10b_final.py`, 2026-09-17).
+independently by `scripts/verify_e10b_final.py`, 2026-09-17; full audit
+re-run 2026-09-18).
+
+## Stale-value sweep (2026-09-18) — corrections applied
+
+Repository-wide search for superseded values (pilot 5-null, 16-null
+interim, biased E14-v1, old manuscript wording). Current-result files
+found carrying stale values, all corrected:
+
+| Where | Stale value | Action |
+|---|---|---|
+| `results/tables/e14_e10b_integrated_catalogue.csv` (all 50 rows, `e10b_ensemble_note`) | "p=0.0588 (n=16; refreshed at 100/100)" | → "p=0.109 (n=100, final, all degree-verified)" |
+| `results/tables/e14_v2_summary.json` (note) | "Gate-4 null percentiles pending E10B completion" | → Gate-4 closed, final p-values cited |
+| `results/final/FINAL_REPORT.md`, `RESEARCH_LOG.md` (null-delta min) | "min 0.0418" (16-null interim carry-over) | → min 0.0078 (true 100-null min; internally consistent with the 2.5% quantile 0.0193) |
+
+Intentionally preserved historical occurrences (clearly marked, not
+current results): `results/superseded/` (pilot + 16-null interim report),
+`results/e10b/E10B_FINAL_STATUS.md` (interim read labeled superseded),
+raw per-null rows (real data values, e.g. null 13 δ = 0.0418), and
+run logs. The `kaggle_package/local_test_out/manifest.json` "pending"
+statuses are a local dry-run fixture, not project state.
+
+Novelty/novelty-gate numbers: the 2026-09-18 sweep (web) confirmed the
+22-paper matrix verdict; no competing four-way-combination work found.
 
 Environment-blocked checks (recorded honestly, not assumed):
 - DOI-level reference re-verification: web search unavailable in this

@@ -341,3 +341,31 @@ Action:       closed 3 bookkeeping loose ends only — (1) this log's stale
 Verdict:      Project COMPLETE as of 2026-09-17 finalization; nothing
               re-run, no statistics touched.
 ```
+
+## SESSION CLOSE 2 — 2026-09-18 (final audit + submission readiness)
+
+```
+Context:      Full external master-prompt audit requested (audit -> fix ->
+              verify -> rebuild). All checks executed on real files.
+Verified:     19/19 raw SHA256 recomputed MATCH; E10B 100/100 (null_id
+              0-99, ok x100, all degree-verified); pytest 12/12 (8.92s);
+              ZIP leak-check CLEAN; Fig6 provenance confirmed (reads
+              e10b_results.json); figures regenerated.
+Fixed (docs/tables only, no statistics changed): (1) e14_e10b_integrated
+              _catalogue.csv stale 16-null ensemble note -> final 100-null
+              values (50 rows); (2) e14_v2_summary.json + run_e14_v2.py
+              note "pending E10B" -> Gate-4 closed; (3) null-delta min
+              0.0418 -> 0.0078 in FINAL_REPORT/RESEARCH_LOG (0.0418 was
+              the superseded 16-null interim value; true 100-null min,
+              consistent with 2.5% quantile 0.0193).
+Executed:     2025-26 novelty sweep (bioRxiv/arXiv/PubMed/Crossref/
+              Scholar surfaces) + FlyWire/CODEX community check - no
+              competing four-way-combination work found; flyGNN (arXiv
+              2026) documented as adjacent-only.
+Infra:        Git initialized (main, commit 79d04ef; raw data excluded
+              via .gitignore); PDF + final ZIP rebuilt; stamp updated;
+              FINAL_REPORT.md rewritten with 19-section submission
+              structure.
+Verdict:      Submission-ready. Remaining: venue choice, cover letter,
+              bioRxiv posting, optional high-RAM connection-table run.
+```

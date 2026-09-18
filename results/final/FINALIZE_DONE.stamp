@@ -1,4 +1,10 @@
-FINALIZATION COMPLETE Thu Sep 17 22:18:25 IST 2026
-nulls=100
-stats verified n_nulls_completed=100 before freeze
-figures+tests+freeze executed; see results/tables/e10b_run.log for per-step status
+FINALIZATION COMPLETE (post-audit) 
+nulls=100 (100/100 degree-verified; null_id 0-99; status ok x100)
+tests=12/12 passed (py -m pytest -q, 8.92s, 2026-09-18)
+number_audit=43/43 manuscript numbers verified (NUMBER_AUDIT.md; stale 16-null notes corrected in integrated catalogue + E14-v2 summary)
+manifest=19/19 SHA256 recomputed MATCH (raw files untouched)
+package=dist/flybrain_connectome_control_FINAL.zip 102 files 5.4 MB leak-check CLEAN (rebuilt 2026-09-18 with corrected artifacts)
+manuscript=paper/manuscript.md current; dist/manuscript.pdf regenerated 2026-09-18 (236 KB, Edge headless)
+git=initialized 2026-09-18, commit 79d04ef, raw data excluded via .gitignore
+novelty=sweep + FlyWire/CODEX community check executed 2026-09-18; no competing overlap found
+verdict=SCENARIO B - H1 rejected under pre-registered framework; submission-ready
