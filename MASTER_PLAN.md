@@ -1,7 +1,7 @@
 # MASTER PLAN — Inhibitory Chokepoints in the Drosophila Brain
 ### The definitive project document: requirements → verified novelty → frozen hypothesis → experiments → status
 
-**Version:** 2.1 (2026-09-18, post-finalization — execution table synced to actual final state; v2.0 2026-09-15 post-audit)
+**Version:** 2.2 (2026-09-19, release preparation — historical roadmap clearly marked; v2.1 2026-09-18 post-finalization; v2.0 2026-09-15 post-audit)
 **Supersedes:** research_plan.md Parts 4–8 (lit survey + hypotheses) — those remain valid for dataset audit (Parts 1–3) but the novelty verdict below is the authoritative one.
 **Inputs:** `review.md` (raw-data audit), `research_plan.md` (strategy), `literature/literature_review.csv` (19 verified papers), `RESEARCH_LOG.md` (executed experiments).
 
@@ -123,11 +123,13 @@ H1 v1 (pre-audit) is superseded: it failed to account for Lin's GABA-degree find
 
 **Final state (2026-09-18):** H1 was tested and **rejected** under the pre-registered framework — the matched GABA effect is compatible with degree-preserving structure (E10B, Scenario B). The positive contribution is the visual-centrifugal chokepoint architecture (2.6× enrichment after degree matching; 13/50 individuals beating degree-matched peers). Pipeline, statistics, interpretation, paper, QC, package, and git history are complete; submission tasks remain (venue, cover letter, bioRxiv).
 
+**Release state (2026-09-19):** E10B complete (100/100 nulls, degree-verified), E14 complete (v2 catalogue + region mapping), final manuscript complete (md/tex/PDF), final QC complete (12/12 tests; 43/43 number audit; 19/19 SHA256), repository freeze complete — scientific freeze commit `fdfafe5`; public release prepared with documentation/provenance updates only (see `results/final/FINAL_REPORT.md` §Release state).
+
 ---
 
-## 7. Corrected roadmap
+## 7. Corrected roadmap (HISTORICAL)
 
-*(Historical schedule as planned 2026-09-15; all items since executed per RESEARCH_LOG — finalization completed 2026-09-18.)*
+*(Historical schedule as planned 2026-09-15 — PRESERVED FOR RECORD ONLY; every item below was executed per RESEARCH_LOG, finalization completed 2026-09-18, repository frozen. This table does NOT describe remaining work.)*
 
 - **Now (Week 4):** run E03 as specified in §5; pre-register exact target lists in RESEARCH_LOG before unblinding results.
 - **Week 5:** E04 nulls; freeze chokepoint definition (no post-hoc changes after nulls run).

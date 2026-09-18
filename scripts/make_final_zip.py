@@ -17,7 +17,7 @@ INCLUDE_DIRS = ["src", "tests", "scripts", "literature", "paper",
                 "results", "reproducibility", "configs"]
 INCLUDE_FILES = ["README.md", "MASTER_PLAN.md", "RESEARCH_LOG.md",
                  "QC_STATUS.md", "research_plan.md", "review.md",
-                 "LICENSE_NOTES.md", "requirements.txt"]
+                 "LICENSE_NOTES.md", "requirements.txt", "CITATION.cff"]
 SKIP_PARTS = {"__pycache__", ".pytest_cache", "dist", ".ipynb_checkpoints"}
 MAX_FILE_MB = 80  # safety valve; results tables are far below this
 

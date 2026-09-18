@@ -1,11 +1,12 @@
-# SHA256 - final deliverables (refreshed 2026-09-18 with publication package)
-# Frozen scientific artifacts; regenerate only after documented corrections.
+# SHA256 - final deliverables (refreshed 2026-09-19 for release preparation)
+# Frozen scientific artifacts (manuscript, e10b_final.json, e10b_nulls.csv,
+# manuscript_production.pdf) unchanged; regenerate only after documented corrections.
 
-174480857dcff3866e7644fa83fd191511a36a508270731ed58e9f0a6c4b3d8e  dist/flybrain_connectome_control_FINAL.zip
+c4b3afae53b59b6bf39772a2e994ec1f1139eed1a5c58ab3422bc72710b88224  dist/flybrain_connectome_control_FINAL.zip
 415857ccf31f9dcf930376388cd06805ef25378738aa70c76ecc51df76286667  dist/manuscript.pdf
 3cc92e01ae881df91a425965e9cf2e0306fb12a19dbf90e6d1077c596b0f46e3  paper/manuscript.tex
 763064e8c39d6957881fdd60dd951f3c2ead3e19f8b15dd67919953e6e08d8c4  paper/manuscript.md
 7182ce2770caf73be585ce5adad606e04ecaea882cff264b35ddf1d6978311ab  paper/manuscript_production.pdf
 c0136eacce776d02124863e428e65d4527c3daba4b8b055a1b52d4f43e7ceffc  results/final/e10b_final.json
 7cd57bcde4a6d65085fa5759c4498054bb9d37b166aad20679c2187b2e1cf764  results/tables/e10b_nulls.csv
-b80aca9a396590c6aa561aeaf0f2ad8f66beabf5d93d640a284ed0f98ca4a76d  results/final/FINAL_REPORT.md
+3240874eea7acbe64b8271015da9b7d01b1e1c0af5078109c0c12a7cee1e77cf  results/final/FINAL_REPORT.md

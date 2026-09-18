@@ -47,10 +47,12 @@ py -m src.experiments.run_e15_figures  # Figures 2-7
 ```
 
 ## Provenance & honesty notes
-- **Git state:** this working folder is not a git repository; the E10B
-  code version hash `f1d00d078f7f3ad7` (recorded inside
-  `e10b_final_report.txt` / worker config) is the code-identity anchor,
-  and the archive ships the exact code itself.
+- **Git state:** the repository is public at
+  `https://github.com/harsha-vardhan-2006/fruitfly_paper` (branch `main`).
+  Scientific freeze commit: `fdfafe5` (2026-09-18); release tag `v1.0.0`.
+  The E10B code version hash `f1d00d078f7f3ad7` (recorded inside
+  `e10b_final_report.txt` / worker config) remains the analysis-time
+  code-identity anchor, and the archive ships the exact code itself.
 - Interim/superseded artifacts are preserved under `results/superseded/`
   (E10 pilot 5-null run; 16-null interim report) — audit trail intact,
   never deleted, never mixed into final numbers.

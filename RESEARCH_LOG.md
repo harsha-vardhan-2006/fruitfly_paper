@@ -369,3 +369,35 @@ Infra:        Git initialized (main, commit 79d04ef; raw data excluded
 Verdict:      Submission-ready. Remaining: venue choice, cover letter,
               bioRxiv posting, optional high-RAM connection-table run.
 ```
+
+## SESSION CLOSE 3 — 2026-09-19 (public repository release preparation)
+
+```
+Context:      Repository published at github.com/harsha-vardhan-2006/
+              fruitfly_paper; release-preparation pass requested.
+Constraint:   Scientific freeze respected — no analyses, statistics,
+              hypotheses, conclusions, or result artifacts changed.
+Done (docs/provenance only):
+              (1) README.md rewritten for the final frozen state
+                  (removed stale "staged, not run" execution language);
+              (2) stale commit references corrected — documents meaning
+                  "final frozen state" now point to fdfafe5 (79d04ef was
+                  the FIRST commit, not the freeze); historical SESSION
+                  CLOSE 2 entry above preserved as written (append-only);
+              (3) stale ZIP manifest (102 files / 5.4 MB) corrected to
+                  the actual deliverable (149 files / ~7.8 MB; hash
+                  matched dist/SHA256SUMS.txt, so the ZIP itself was
+                  correct and untouched);
+              (4) MASTER_PLAN roadmap section explicitly marked HISTORICAL;
+              (5) reproducibility/REPRODUCIBILITY.md git-state note
+                  corrected (was "not a git repository"; predates git init);
+              (6) CITATION.cff added (repository metadata only; no DOI
+                  invented - archival DOI to be added after Zenodo).
+Verified:     pytest 12/12 PASS; scripts/verify_e10b_final.py all checks
+              true; 19/19 raw SHA256 untouched; canonical numbers
+              cross-checked against frozen artifacts - no discrepancies
+              found; raw-dataset leak check CLEAN; no secrets committed.
+Verdict:      Scientific content UNCHANGED; repository documentation now
+              accurately represents the final frozen state. Release tag
+              v1.0.0 marks the public research package.
+```

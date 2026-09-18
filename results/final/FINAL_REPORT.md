@@ -4,7 +4,8 @@
 experiment, gate, and finish-line step executed and verified; the 2026-09-18
 audit session re-verified all artifacts end-to-end and corrected the last
 stale documentation values (see §16 and the audit appendix at the end).
-Git: initialized 2026-09-18, commit `79d04ef`, raw data excluded.
+Git: initialized 2026-09-18 (first commit `79d04ef`); scientific freeze
+commit `fdfafe5`; raw data excluded.
 
 ---
 
@@ -15,8 +16,8 @@ Git: initialized 2026-09-18, commit `79d04ef`, raw data excluded.
   (retitled 2026-09-18 from "Neurotransmitter Identity and Network Control…"
   to match the actual headline finding)
 - **Dataset:** FlyWire FAFB v783 (Princeton exports), CC BY-NC 4.0
-- **Primary artifact:** this repository (commit 79d04ef) +
-  `dist/flybrain_connectome_control_FINAL.zip` (102 files, 5.4 MB)
+- **Primary artifact:** this repository (scientific freeze commit `fdfafe5`) +
+  `dist/flybrain_connectome_control_FINAL.zip` (149 files, ≈ 7.8 MB)
 - **Finalization:** 2026-09-17 (first pass), 2026-09-18 (post-audit re-verification)
 
 ## 2. Research question (frozen)
@@ -182,16 +183,17 @@ sensitivity: 967 pairs, δ = 0.107 ≈ 0.111. Metric: reach-drop ρ = 0.39
 
 ## 17. Package contents
 
-- `dist/flybrain_connectome_control_FINAL.zip` — 102 files, 5.4 MB,
-  rebuilt 2026-09-18 with corrected artifacts; raw-dataset leak check
-  **CLEAN** (no .gz/.zip raw data, no caches, no credentials); contains
-  code, tests, configs, processed tables, figures, manuscript, docs,
-  manifests.
+- `dist/flybrain_connectome_control_FINAL.zip` — 149 files, ≈ 7.8 MB,
+  rebuilt 2026-09-19 for release preparation (corrected docs +
+  CITATION.cff); raw-dataset leak check **CLEAN** (no .gz/.zip raw data,
+  no caches, no credentials); contains code, tests, configs, processed
+  tables, figures, manuscript, docs, manifests.
 - `dist/manuscript.pdf` — 236 KB, regenerated 2026-09-18 from the current
   `paper/manuscript.md` (md_to_html.py + Edge headless).
 - `results/final/FINALIZE_DONE.stamp` — updated post-audit with all
   verification statuses.
-- Git: repository initialized 2026-09-18 (branch `main`, commit `79d04ef`);
+- Git: repository initialized 2026-09-18 (branch `main`; scientific freeze
+  commit `fdfafe5`);
   `.gitignore` excludes the raw dataset, caches, and secrets; the only
   committed ZIP is the final deliverable itself.
 
@@ -219,7 +221,8 @@ structural control.
 ## 19. Remaining submission tasks
 
 1. Venue selection + cover letter (lead with the honest null + VC result).
-2. bioRxiv posting; repository archival (Zenodo DOI for commit 79d04ef).
+2. bioRxiv posting; repository archival (Zenodo DOI for the release tag
+   v1.0.0 / freeze commit `fdfafe5`).
 3. Optional future work (not blockers): connection-table sensitivity on a
    high-RAM machine; signed-motif layer around the VC chokepoint set;
    cross-dataset replication (BANC/MaleCNS); E08 AI prediction layer
@@ -236,9 +239,9 @@ structural control.
 | E10B integrity | 100/100 nulls, null_id 0–99 complete, status ok ×100, all degree-verified; final JSON ≡ tables JSON; archive CSV hash-identical |
 | SHA256 manifest | 19/19 recomputed MATCH |
 | Stale-value sweep | 3 documentation-level corrections (integrated-catalogue ensemble notes ×50 rows; e14_v2_summary note; null-delta min 0.0418→0.0078); superseded artifacts remain quarantined and labeled |
-| ZIP | 102 files / 5.4 MB; leak check CLEAN; corrected files verified inside |
+| ZIP | 149 files / ≈ 7.8 MB; leak check CLEAN (rebuilt 2026-09-19 with release-prep docs) |
 | PDF | regenerated 2026-09-18 (236 KB) |
-| Git | init + commit 79d04ef; raw data excluded |
+| Git | first commit `79d04ef`; scientific freeze `fdfafe5`; raw data excluded |
 | Novelty sweep + community check | executed 2026-09-18; no competing overlap |
 
 ### Master roadmap compliance (2026-09-18, STEPS 1–20)

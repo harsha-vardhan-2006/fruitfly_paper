@@ -117,7 +117,7 @@ equal these values (verified 2026-09-18).
 | Raw-file SHA256 coverage | 19/19 recomputed MATCH | `e18_manifest.json` (verified 2026-09-18) |
 | Tests | 12/12 pass | `py -m pytest -q` |
 | Final package | 102 files / 5.4 MB / leak-CLEAN | `dist/flybrain_connectome_control_FINAL.zip` |
-| Git provenance | 79d04ef → ac0edbe → (final freeze commit) | this repository |
+| Git provenance | 79d04ef → ac0edbe → fdfafe5 (scientific freeze) | this repository |
 
 Verdict: **all manuscript occurrences agree with canonical values; 43/43
 rows above plus this table verified 2026-09-18.**

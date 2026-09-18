@@ -1,6 +1,8 @@
 # FINAL QC STATUS
 
-Live document; ✅ only with artifact evidence. Final pass: 2026-09-18.
+Live document; ✅ only with artifact evidence. Final pass: 2026-09-18;
+release-preparation re-check 2026-09-19 (documentation/provenance only,
+no scientific changes).
 
 ## Data
 - [x] Raw FAFB v783 untouched — all writes to `data/processed/`, `results/`; hashes in `results/tables/e18_manifest.json`
@@ -70,4 +72,4 @@ Live document; ✅ only with artifact evidence. Final pass: 2026-09-18.
 - [x] Environment manifest — `e18_manifest.json` (Python 3.13.2, pandas 2.3.3, numpy 2.4.2, scipy 1.18.0, Win11 AMD64)
 - [x] Results reorganization — `results/final/` + `results/superseded/` (pilot + 16-null interim preserved, never deleted)
 - [x] E10B archive — `results/e10b/E10B_FINAL_STATUS.md`
-- [x] Final package ZIP (code+results+paper, excluding raw dataset) — `dist/flybrain_connectome_control_FINAL.zip` (102 files, 5.4 MB; leak-check CLEAN); rebuilt 2026-09-18 with updated RESEARCH_LOG/LICENSE_NOTES/QC_STATUS
+- [x] Final package ZIP (code+results+paper, excluding raw dataset) — `dist/flybrain_connectome_control_FINAL.zip` (149 files, ≈ 7.8 MB; leak-check CLEAN); rebuilt 2026-09-19 for release preparation with updated RESEARCH_LOG/README/CITATION.cff/provenance docs; SHA256 refreshed in `dist/SHA256SUMS.txt`
