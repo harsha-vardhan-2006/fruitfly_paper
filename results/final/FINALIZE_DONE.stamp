@@ -1,0 +1,4 @@
+FINALIZATION COMPLETE Thu Sep 17 22:18:25 IST 2026
+nulls=100
+stats verified n_nulls_completed=100 before freeze
+figures+tests+freeze executed; see results/tables/e10b_run.log for per-step status
