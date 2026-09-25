@@ -401,3 +401,25 @@ Verdict:      Scientific content UNCHANGED; repository documentation now
               accurately represents the final frozen state. Release tag
               v1.0.0 marks the public research package.
 ```
+
+## PROVENANCE NOTE — repository history rewrite (2026-09-26)
+
+```
+What:       All commit SHAs in this repository changed on 2026-09-26. The
+            entire history (8 commits + tag v1.0.0) was rewritten SOLELY to
+            correct author identity from "Harsha Vardhan" to the full name
+            "Harsha Vardhan Malipeddi" (git filter-branch env-filter; no
+            file contents, dates, or messages changed).
+Old -> new (key refs):
+            79d04ef -> e12f4ee  (first commit)
+            fdfafe5 -> e7f9d96  (scientific-freeze commit cited as "freeze
+                                 commit fdfafe5" in historical entries)
+            722b646 -> 9a6ac1a  (previous main tip)
+            2711979 -> 991202a  (v1.0.0 tag commit)
+            Main tip now 9a6ac1a; tag v1.0.0 re-pointed (new tag object
+            4d17e61) and force-pushed to origin.
+Rule:       Historical entries above that cite old SHAs (79d04ef, fdfafe5)
+            are PRESERVED AS WRITTEN per append-only discipline; their
+            historical meaning maps through the table above. No scientific
+            artifact is affected.
+```
